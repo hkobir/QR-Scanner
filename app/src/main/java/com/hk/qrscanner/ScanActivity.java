@@ -81,7 +81,8 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
         builder.setNeutralButton("Search with Google", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(myResult));
+                String url = "https://www.google.com.np/search?q=";
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url + myResult));
                 startActivity(browserIntent);
             }
         });
