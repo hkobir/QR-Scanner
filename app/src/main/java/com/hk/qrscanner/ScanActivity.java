@@ -63,10 +63,6 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
     }
 
 
-
-
-
-
     @Override
     public void handleResult(Result result) {
         final String myResult = result.getText();
@@ -79,6 +75,14 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 scannerView.resumeCameraPreview(ScanActivity.this);
+            }
+        });
+
+        builder.setNeutralButton("Search with Google", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(myResult));
+                startActivity(browserIntent);
             }
         });
 
