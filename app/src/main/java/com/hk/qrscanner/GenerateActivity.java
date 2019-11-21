@@ -5,10 +5,13 @@ import androidx.databinding.DataBindingUtil;
 
 import android.graphics.Bitmap;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 
 import android.view.View;
+import android.widget.Toast;
 
 
 import com.google.zxing.BarcodeFormat;
@@ -43,6 +46,28 @@ public class GenerateActivity extends AppCompatActivity {
             }
         });
 
+        binding.saveToGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (bitmap != null) {
+                    // Save image to gallery
+                    String savedImageURL = MediaStore.Images.Media.insertImage(  //for save obviously need write external storage permission
+                            getContentResolver(),
+                            bitmap,
+                            "My Personal QRCode",
+                            "My medical information"
+                    );
+                    // Parse the gallery image url to uri
+                    Uri savedImageURI = Uri.parse(savedImageURL);
+
+                    Toast.makeText(GenerateActivity.this, "save image to gallery: "+savedImageURI, Toast.LENGTH_LONG).show();
+
+                } else {
+                    Toast.makeText(GenerateActivity.this, "Generate the QR image first.", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
     }
 
     private void generateCode(String text) {
@@ -50,10 +75,11 @@ public class GenerateActivity extends AppCompatActivity {
         MultiFormatWriter formatWriter = new MultiFormatWriter();
 
         try {
-            BitMatrix bitMatrix = formatWriter.encode(text, BarcodeFormat.QR_CODE,200,200);
+            BitMatrix bitMatrix = formatWriter.encode(text, BarcodeFormat.QR_CODE, 250, 250);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             bitmap = barcodeEncoder.createBitmap(bitMatrix);
             binding.qrImage.setImageBitmap(bitmap);
+            binding.saveToGallery.setVisibility(View.VISIBLE);
 
         } catch (Exception e) {
             e.printStackTrace();

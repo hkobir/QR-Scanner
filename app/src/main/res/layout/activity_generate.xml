@@ -7,6 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="15dp"
+        android:background="@drawable/layout_back"
         tools:context=".GenerateActivity">
 
         <LinearLayout
@@ -18,6 +19,7 @@
 
             <EditText
                 android:id="@+id/textET"
+                android:backgroundTint="#6200EA"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -25,25 +27,57 @@
 
             <Button
                 android:id="@+id/generateButton"
+                android:background="@drawable/card_edge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="17sp"
                 android:text="GENERATE" />
-            <androidx.cardview.widget.CardView
-                android:padding="10dp"
-                app:cardCornerRadius="3dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/qrImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:layout_marginTop="35dp"
+                android:layout_width="253dp"
+                android:layout_height="253dp"
+                android:orientation="vertical"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="@drawable/card_edge">
+                <androidx.cardview.widget.CardView
+                    android:minHeight="200dp"
+                    android:padding="10dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp"
+                    app:cardUseCompatPadding="true"
 
+                    android:layout_width="252dp"
+                    android:layout_height="252dp"
+                    >
+
+
+
+                    <ImageView
+                        android:id="@+id/qrImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/saveToGallery"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/card_edge"
+                android:text="Save to gallery"
+                android:layout_marginTop="15dp"
+                android:textColor="#fff"
+                android:padding="8dp"
+                android:textSize="16sp"
+                android:textAllCaps="false"
+                />
         </LinearLayout>
 
     </RelativeLayout>

@@ -6,27 +6,52 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
+        android:padding="20dp"
+        android:background="@drawable/layout_back"
         tools:context=".HomeActivity">
 
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:textColor="#1A4103"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="QR Scanner"
+            android:textSize="17sp"
+            android:fontFamily="@font/starcraft"
+            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:gravity="center_vertical|center_horizontal"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/generateBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="generate" />
+                android:background="@drawable/card_edge"
+                android:text="Generate QR"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_scan2" />
 
             <Button
                 android:id="@+id/scanBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Scan qr code" />
+                android:layout_marginTop="30dp"
+                android:background="@drawable/card_edge"
+                android:text="Scan QR"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="17sp" />
         </LinearLayout>
     </RelativeLayout>
 </layout>
